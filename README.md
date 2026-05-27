@@ -111,6 +111,11 @@ http://127.0.0.1:5000
 ---
 
 # Screenshots
+##Register page
+![Register](screenshots/register.png)
+
+##Longin page
+![login](screenshots/login.png)
 
 ## Home Page
 ![Home](screenshots/home.png)
@@ -120,6 +125,9 @@ http://127.0.0.1:5000
 
 ## History Page
 ![History](screenshots/history.png)
+
+##Dashboard page
+![dashboard](screenshots/dashboard.png)
 
 ---
 
