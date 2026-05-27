@@ -1,4 +1,4 @@
-# Crop Disease Prediction System 🌱
+# Crop Disease Prediction System
 
 An AI-powered web application that detects and classifies crop diseases from uploaded leaf images using Deep Learning and Computer Vision techniques.
 
@@ -6,11 +6,11 @@ An AI-powered web application that detects and classifies crop diseases from upl
 
 # Project Overview
 
-The system uses Convolutional Neural Networks (CNNs) trained on plant leaf datasets to classify diseases across multiple crops. Users can upload images and get instant predictions with confidence scores.
+The Crop Disease Prediction System uses Convolutional Neural Networks (CNNs) trained on plant leaf datasets to classify diseases across multiple crops. Users can upload a leaf image and get instant predictions along with confidence scores through a web interface.
 
 ---
 
-# Technology Stack
+#  Technology Stack
 
 ## Frontend
 - HTML
@@ -24,7 +24,7 @@ The system uses Convolutional Neural Networks (CNNs) trained on plant leaf datas
 ## Machine Learning
 - TensorFlow
 - Keras
-- CNN
+- CNN (Convolutional Neural Network)
 
 ## Database
 - MongoDB
@@ -36,19 +36,20 @@ The system uses Convolutional Neural Networks (CNNs) trained on plant leaf datas
 
 ---
 
-# Features
+#  Features
 
-- Multi-crop disease prediction
-- Image upload & preprocessing
-- CNN-based classification
-- Confidence score prediction
-- Authentication system
-- History tracking (MongoDB)
-- Responsive UI
+- User Authentication (Login / Register)
+- Upload crop leaf images
+- CNN-based disease prediction
+- Multi-crop support
+- Prediction confidence score
+- Prediction history tracking
+- Dashboard interface
+- Responsive UI design
 
 ---
 
-# Supported Crops
+# 🌾 Supported Crops
 
 - Apple
 - Corn
@@ -57,16 +58,22 @@ The system uses Convolutional Neural Networks (CNNs) trained on plant leaf datas
 
 ---
 
-# Project Structure
+#  Project Structure
 
-```txt
+```
 Crop-Disease-Prediction/
 │
 ├── models/
 ├── static/
 ├── templates/
-├── dataset/
 ├── screenshots/
+│   ├── home.png
+│   ├── dashboard.png
+│   ├── login.png
+│   ├── register.png
+│   ├── history.png
+│   └── result.png
+│
 ├── app.py
 ├── requirements.txt
 └── README.md
@@ -74,14 +81,14 @@ Crop-Disease-Prediction/
 
 ---
 
-# Installation
+#  Installation & Setup
 
 ## 1. Clone Repository
 ```bash
 git clone https://github.com/lakshitaporwal28/Crop-Disease-Prediction-.git
 ```
 
-## 2. Move to Folder
+## 2. Move to Project Directory
 ```bash
 cd Crop-Disease-Prediction-
 ```
@@ -98,40 +105,41 @@ https://git-lfs.com
 git lfs install
 ```
 
-## 5. Run Project
+## 5. Run Application
 ```bash
 python app.py
 ```
 
-## 6. Open Browser
+## 6. Open in Browser
 ```
 http://127.0.0.1:5000
 ```
 
 ---
 
-# Screenshots
-##Register page
-![Register](screenshots/register.png)
+#  Project Screenshots
 
-##Longin page
-![login](screenshots/login.png)
+##  Home Page
+![Home Page](screenshots/home.png)
 
-## Home Page
-![Home](screenshots/home.png)
+## Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-## Prediction Result
-![Result](screenshots/result.png)
+##  Login Page
+![Login Page](screenshots/login.png)
 
-## History Page
-![History](screenshots/history.png)
+##  Register Page
+![Register Page](screenshots/register.png)
 
-##Dashboard page
-![dashboard](screenshots/dashboard.png)
+##  History Page
+![History Page](screenshots/history.png)
+
+##  Prediction Result
+![Result Page](screenshots/result.png)
 
 ---
 
-# Team Members
+#  Team Members
 
 - Lakshita Porwal
 - Labdhi Vohra
@@ -139,15 +147,16 @@ http://127.0.0.1:5000
 
 ---
 
-# Future Improvements
-
-- More crop support
-- Better accuracy
-- Cloud deployment
+#  Future Improvements
+- Add fertilizer suggestion 
+- Add more crop types
+- Improve model accuracy
+- Deploy on cloud (AWS / Render)
+- Real-time detection
 - Mobile optimization
 
 ---
 
-# Repository
+#  Repository
 
-:contentReference[oaicite:0]{index=0}
+https://github.com/lakshitaporwal28/Crop-Disease-Prediction-.git
