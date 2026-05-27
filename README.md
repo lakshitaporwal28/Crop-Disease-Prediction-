@@ -120,22 +120,22 @@ http://127.0.0.1:5000
 #  Project Screenshots
 
 ##  Home Page
-![Home Page](screenshots/home.png)
+![Home Page](./screenshots/home.png)
 
 ## Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](./screenshots/dashboard.png)
 
 ##  Login Page
-![Login Page](screenshots/login.png)
+![Login Page](./screenshots/login.png)
 
 ##  Register Page
 ![Register Page](screenshots/register.png)
 
 ##  History Page
-![History Page](screenshots/history.png)
+![History Page](./screenshots/history.png)
 
 ##  Prediction Result
-![Result Page](screenshots/result.png)
+![Result Page](./screenshots/result.png)
 
 ---
 
