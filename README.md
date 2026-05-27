@@ -49,7 +49,7 @@ The Crop Disease Prediction System uses Convolutional Neural Networks (CNNs) tra
 
 ---
 
-# 🌾 Supported Crops
+#  Supported Crops
 
 - Apple
 - Corn
