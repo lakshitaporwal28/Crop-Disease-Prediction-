@@ -1,0 +1,4 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv310/Scripts/python.exe",
+    "python.terminal.activateEnvInTriggeredTerminal": true
+}

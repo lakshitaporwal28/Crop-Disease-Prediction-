@@ -2,14 +2,11 @@
 .venv/
 env/
 venv/
+venv310/
 
 # Python Cache
 __pycache__/
 *.pyc
-
-# Machine Learning Models
-*.keras
-*.h5
 
 # Uploads
 uploads/*
