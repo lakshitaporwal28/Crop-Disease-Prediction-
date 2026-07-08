@@ -139,11 +139,10 @@ http://127.0.0.1:5000
 
 ---
 
-#  Team Members
+#  Author
 
 - Lakshita Porwal
-- Labdhi Vohra
-- Lakshita Patel
+
 
 ---
 
