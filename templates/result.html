@@ -61,12 +61,17 @@
 
             <!-- Right Analysis Card -->
             <div class="analysis-card">
-                <div class="danger-badge">
-                    <i class="ph ph-warning"></i> {{ disease_status | default('Pathogen Detected') }}
+                <div class="danger-badge {% if disease_status == 'Healthy' %}success-badge{% endif %}">
+                    {% if disease_status == 'Healthy' %}
+                        <i class="ph ph-check-circle-fill"></i>
+                    {% else %}
+                        <i class="ph ph-warning-fill"></i>
+                    {% endif %}
+                    {{ disease_status | default('Pathogen Detected') }}
                 </div>
                 
-                <h2 class="disease-name">{{ prediction | default('Apple Scab') }}</h2>
-                <div class="disease-species">Venturia inaequalis (Fungal Pathogen)</div>
+                <h2 class="disease-name">{{ recommendation.common_name if recommendation else (prediction | default('Apple Scab')) }}</h2>
+                <div class="disease-species">Model Label: {{ prediction }}</div>
 
                 <div class="metrics-grid">
                     <div class="metric-box">
@@ -75,7 +80,9 @@
                     </div>
                     <div class="metric-box">
                         <div class="metric-label">Severity</div>
-                        <div class="metric-value moderate">{{ severity | default('Moderate') }} <i class="ph ph-triangle"></i></div>
+                        <div class="metric-value {% if severity == 'None' or severity == 'Healthy' %}healthy{% elif severity == 'High' or severity == 'Severe' or severity == 'Very High' %}critical{% else %}moderate{% endif %}">
+                            {{ recommendation.severity if recommendation else (severity | default('Moderate')) }}
+                        </div>
                     </div>
                 </div>
 
@@ -85,6 +92,88 @@
             </div>
         </div>
 
+        <!-- Advisory Section -->
+        {% if recommendation %}
+        <div class="advisory-section mt-4">
+            <h2 class="advisory-section-title"><i class="ph ph-first-aid-kit"></i> Treatment & Prevention Advisory</h2>
+            
+            <div class="advisory-grid">
+                <!-- Treatment details card -->
+                <div class="advisory-card-item treatment-details-card">
+                    <div class="advisory-card-header">
+                        <i class="ph ph-flask"></i>
+                        <h3>Treatment Protocol</h3>
+                    </div>
+                    <div class="advisory-card-body">
+                        <div class="advisory-info-list">
+                            <div class="advisory-info-row">
+                                <span class="info-row-label"><i class="ph ph-spray-bottle"></i> Recommended Fertilizer/Fungicide</span>
+                                <span class="info-row-value highlighted">{{ recommendation.fertilizer }}</span>
+                            </div>
+                            <div class="advisory-info-row">
+                                <span class="info-row-label"><i class="ph ph-scales"></i> Quantity/Dosage</span>
+                                <span class="info-row-value">{{ recommendation.quantity }}</span>
+                            </div>
+                            <div class="advisory-info-row">
+                                <span class="info-row-label"><i class="ph ph-calendar-blank"></i> Application Frequency</span>
+                                <span class="info-row-value">{{ recommendation.frequency }}</span>
+                            </div>
+                            <div class="advisory-info-row">
+                                <span class="info-row-label"><i class="ph ph-hash"></i> Number of Applications</span>
+                                <span class="info-row-value">{{ recommendation.applications }}</span>
+                            </div>
+                            {% if recommendation.best_time_to_spray %}
+                            <div class="advisory-info-row">
+                                <span class="info-row-label"><i class="ph ph-clock"></i> Best Time to Spray</span>
+                                <span class="info-row-value">{{ recommendation.best_time_to_spray }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if recommendation.treatment %}
+                        <div class="treatment-instructions">
+                            <h4>Application Method</h4>
+                            <p>{{ recommendation.treatment }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Prevention Tips & Organic Alternatives card -->
+                <div class="advisory-card-item prevention-card">
+                    <div class="advisory-card-header">
+                        <i class="ph ph-shield-check"></i>
+                        <h3>Prevention & Cultural Tips</h3>
+                    </div>
+                    <div class="advisory-card-body">
+                        <div class="prevention-tips-list">
+                            <ul>
+                                {% for tip in recommendation.prevention.split('. ') %}
+                                    {% if tip.strip() %}
+                                        <li>
+                                            <i class="ph ph-caret-circle-right"></i> 
+                                            <span>{{ tip.strip() }}{% if not tip.strip().endswith('.') %}.{% endif %}</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+                        {% if recommendation.organic_alternative %}
+                        <div class="organic-alternative-box">
+                            <h4><i class="ph ph-leaf"></i> Organic/Alternative Approach</h4>
+                            <p>{{ recommendation.organic_alternative }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.85rem; font-style: italic;">
+                <i class="ph ph-info"></i> Recommendations are for reference only — consult a local agricultural expert for precise dosage.
+            </div>
+        </div>
+        {% endif %}
 
     </main>
 

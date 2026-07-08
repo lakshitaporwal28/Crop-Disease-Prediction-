@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +51,7 @@
             height: 500px;
             object-fit: cover;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         /* Intelligence Layer */
@@ -75,7 +76,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
         }
 
         .intel-icon {
@@ -222,8 +223,53 @@
             gap: 1rem;
         }
 
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-layout {
+                padding: 6rem 4rem 3rem;
+            }
+            .mission-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .mission-text h1 {
+                font-size: 2.8rem;
+            }
+            .intelligence-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .trust-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-layout {
+                padding: 5rem 1.5rem 2rem;
+            }
+            .mission-text h1 {
+                font-size: 2.2rem;
+            }
+            .intelligence-grid {
+                grid-template-columns: 1fr;
+            }
+            .mission-image {
+                height: 300px;
+            }
+            .trust-section {
+                padding: 2rem;
+            }
+            .trust-graphics {
+                grid-template-columns: 1fr;
+            }
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Header -->
@@ -234,65 +280,77 @@
             <a href="/history">History</a>
             <a href="/about" class="active">About</a>
             {% if session.get('phone') %}
-                <a href="/logout" style="color: var(--danger-red);">Logout</a>
-                <a href="/profile" class="user-profile" title="Logged in as {{ session.get('name') }}">
-                    <i class="ph ph-user"></i>
-                </a>
+            <a href="/logout" style="color: var(--danger-red);">Logout</a>
+            <a href="/profile" class="user-profile" title="Logged in as {{ session.get('name') }}">
+                <i class="ph ph-user"></i>
+            </a>
             {% else %}
-                <a href="/login" style="color: var(--primary-green); font-weight: 700;">Login</a>
+            <a href="/login" style="color: var(--primary-green); font-weight: 700;">Login</a>
             {% endif %}
         </nav>
     </header>
 
     <main class="page-container about-layout">
-        
+
         <!-- Mission Section -->
         <div class="mission-section">
             <div class="mission-text">
                 <div class="badge">Our Mission</div>
-                <h1>Empowering global farming through <span>Precision AI.</span></h1>
+                <h1>Empowering global farming through <span>Smart Crop Disease Detection.</span></h1>
                 <p class="mission-desc">
-                    Our mission is to support farmers globally by providing fast and accurate crop disease diagnostics using cutting-edge AI. We bridge the gap between deep botanical science and field-ready technology.
+                    Our mission is to make crop disease detection simple and accessible — farmers can upload a single
+                    leaf image and instantly know what disease is affecting their crop, along with treatment
+                    recommendations.
                 </p>
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1200&auto=format&fit=crop" class="mission-image" alt="Farmer in field">
+                <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?q=80&w=1200&auto=format&fit=crop"
+                    class="mission-image" alt="Farmer in field">
             </div>
         </div>
 
         <!-- Intelligence Layer Section -->
-        <h2 class="section-title">The Intelligence Layer</h2>
+        <h2 class="section-title">What Our System Offers</h2>
         <div class="intelligence-grid">
             <div class="intel-card">
                 <div class="intel-icon">
                     <i class="ph ph-brain"></i>
                 </div>
-                <div class="intel-title">AI-Powered Identification</div>
-                <div class="intel-desc">Neural networks trained on millions of pathological samples provide diagnostics with up to 99% accuracy in seconds.</div>
+                <div class="intel-title">The Technology</div>
+                <div class="intel-desc">ML-Based Disease Detection
+                    A Convolutional Neural Network (CNN) trained on the
+                    PlantVillage dataset detects crop diseases from leaf
+                    images with high accuracy.</div>
             </div>
-            
+
             <div class="intel-card">
                 <div class="intel-icon">
                     <i class="ph ph-plant"></i>
                 </div>
-                <div class="intel-title">Wide Crop Coverage</div>
-                <div class="intel-desc">From staple grains to exotic fruit varieties, our database covers over 150+ crop types and 400+ specific diseases.</div>
+                <div class="intel-title">Crop Coverage</div>
+                <div class="intel-desc">Supports 4 crops — Apple, Corn, Potato, and Strawberry
+                    — covering 15 diseases and healthy plant detection.</div>
             </div>
 
             <div class="intel-card">
                 <div class="intel-icon">
                     <i class="ph ph-lightning"></i>
                 </div>
-                <div class="intel-title">Real-Time Results</div>
-                <div class="intel-desc">No lab waiting times. Get actionable insights directly in the field, even with limited connectivity.</div>
+                <div class="intel-title">Treatment Recommendations</div>
+                <div class="intel-desc">Every diagnosis includes the disease name, confidence
+                    score, recommended fertilizer, dosage quantity, and
+                    step-by-step treatment guide.</div>
             </div>
         </div>
 
-
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 1.1rem; font-style: italic; font-weight: 500;">
+            "Built by Lakshita to make crop disease detection fast, accessible, and actionable for every farmer."
+        </div>
 
     </main>
 
 
 
 </body>
+
 </html>

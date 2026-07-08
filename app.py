@@ -8,6 +8,26 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 from pymongo import MongoClient
 from datetime import datetime
+from recommendations import RECOMMENDATIONS
+
+PREDICTION_TO_RECOMMENDATION = {
+    "Apple___Apple_scab": "Apple__Apple_scab",
+    "Apple___Black_rot": "Apple__Black_rot",
+    "Apple___Cedar_apple_rust": "Apple__Cedar_apple_rust",
+    "Apple___healthy": "Apple__healthy",
+    
+    "Corn___Cercospora_leaf_spot": "Corn_(maize)__Cercospora_leaf_spot Gray_leaf_spot",
+    "Corn___Common_rust": "Corn_(maize)__Common_rust_",
+    "Corn___Northern_Leaf_Blight": "Corn_(maize)__Northern_Leaf_Blight",
+    "Corn___healthy": "Corn_(maize)__healthy",
+    
+    "Potato___Early_blight": "Potato__Early_blight",
+    "Potato___Late_blight": "Potato__Late_blight",
+    "Potato___healthy": "Potato__healthy",
+    
+    "Strawberry___Leaf_scorch": "Strawberry__Leaf_scorch",
+    "Strawberry___healthy": "Strawberry__healthy",
+}
 
 app = Flask(__name__)
 app.secret_key = "agrolens_secret_key_123" # Required for sessions
@@ -115,13 +135,19 @@ def index():
 
         # Prediction
         pred = model.predict(img_array)
+        
+        # Handle models that have more output nodes than defined classes (e.g. apple_model.h5)
+        if pred.shape[1] > len(classes):
+            pred = pred[:, :len(classes)]
+            
         predicted_class_idx = np.argmax(pred)
         confidence_val = float(np.max(pred)) * 100
         confidence = f"{confidence_val:.1f}%"
 
         # Safety check (fix IndexError)
         if predicted_class_idx >= len(classes):
-            prediction = "Prediction Error"
+            flash("Please upload a clearer leaf image.")
+            return redirect(url_for('index'))
         else:
             prediction = classes[predicted_class_idx]
 
@@ -156,7 +182,20 @@ def index():
         except Exception as e:
             print("Failed to save history to database:", e)
 
-        return render_template("result.html", prediction=prediction, filename=file.filename, confidence=confidence, severity=severity, disease_status=disease_status, user_name=user_name)
+        # Look up treatment recommendation
+        rec_key = PREDICTION_TO_RECOMMENDATION.get(prediction)
+        recommendation = RECOMMENDATIONS.get(rec_key)
+
+        return render_template(
+            "result.html", 
+            prediction=prediction, 
+            recommendation=recommendation,
+            filename=file.filename, 
+            confidence=confidence, 
+            severity=severity, 
+            disease_status=disease_status, 
+            user_name=user_name
+        )
 
     return render_template("index.html", prediction=prediction, user_name=user_name)
 
@@ -243,4 +282,6 @@ def logout():
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 7860))
+    app.run(host="0.0.0.0", port=port, debug=False)
