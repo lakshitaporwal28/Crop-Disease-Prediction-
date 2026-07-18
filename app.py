@@ -1,5 +1,10 @@
 import os
 print("RUNNING FROM:", os.getcwd())
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
 import certifi
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 from functools import wraps
@@ -30,10 +35,10 @@ PREDICTION_TO_RECOMMENDATION = {
 }
 
 app = Flask(__name__)
-app.secret_key = "agrolens_secret_key_123" # Required for sessions
+app.secret_key = os.getenv("SECRET_KEY", "agrolens_secret_key_123") # Required for sessions
 
 # Initialize MongoDB (Using MongoDB Atlas)
-MONGO_URI = "mongodb+srv://rishiporwal2004_db_user:Lakshita2004@crop-history.vp7zog6.mongodb.net/?retryWrites=true&w=majority&appName=crop-history"
+MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://rishiporwal2004_db_user:Lakshita2004@crop-history.vp7zog6.mongodb.net/?retryWrites=true&w=majority&appName=crop-history")
 
 try:
     client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000, tlsCAFile=certifi.where())

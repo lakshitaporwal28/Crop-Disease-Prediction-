@@ -11,3 +11,6 @@ __pycache__/
 # Uploads
 uploads/*
 !uploads/.gitkeep
+
+# Secrets
+.env
