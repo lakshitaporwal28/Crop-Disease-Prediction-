@@ -22,8 +22,6 @@ The Crop Disease Prediction System uses Convolutional Neural Networks (CNNs) tra
 - Flask
 
 ## Machine Learning
-- TensorFlow
-- Keras
 - CNN (Convolutional Neural Network)
 
 ## Database
@@ -32,7 +30,7 @@ The Crop Disease Prediction System uses Convolutional Neural Networks (CNNs) tra
 ## Tools
 - VS Code
 - GitHub
-- Git LFS
+- Git 
 
 ---
 
