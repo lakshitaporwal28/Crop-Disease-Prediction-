@@ -7,6 +7,7 @@ A deep learning-based web system that detects and classifies crop diseases from 
 # Project Overview
 
 The Crop Disease Prediction System uses CNN models trained on plant leaf images to classify diseases across multiple crops. Users can upload a crop leaf image through the web interface and receive a disease prediction along with a confidence score.
+
 Based on the predicted disease, the system also provides relevant fertilizer recommendations and disease-prevention guidance.
 ---
 
