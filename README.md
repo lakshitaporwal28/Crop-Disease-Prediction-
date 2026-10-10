@@ -1,31 +1,26 @@
 # Crop Disease Prediction System
 
-An AI-powered web application that detects and classifies crop diseases from uploaded leaf images using Deep Learning and Computer Vision techniques.
+A deep learning-based web system that detects and classifies crop diseases from uploaded leaf images using Convolutional Neural Networks (CNNs).
 
 ---
 
 # Project Overview
 
-The Crop Disease Prediction System uses Convolutional Neural Networks (CNNs) trained on plant leaf datasets to classify diseases across multiple crops. Users can upload a leaf image and get instant predictions along with confidence scores through a web interface.
-
+The Crop Disease Prediction System uses CNN models trained on plant leaf images to classify diseases across multiple crops. Users can upload a crop leaf image through the web interface and receive a disease prediction along with a confidence score.
+Based on the predicted disease, the system also provides relevant fertilizer recommendations and disease-prevention guidance.
 ---
 
 #  Technology Stack
 
-## Frontend
-- HTML
-- CSS
-- JavaScript
+Frontend: HTML, CSS, JavaScript
 
-## Backend
-- Python
-- Flask
+Backend: Python, Flask
 
-## Machine Learning
-- CNN (Convolutional Neural Network)
+Machine Learning: CNN
 
-## Database
-- MongoDB
+Database: MongoDB
+
+Tools: VS Code, Git, GitHub
 
 ## Tools
 - VS Code
@@ -41,6 +36,8 @@ The Crop Disease Prediction System uses Convolutional Neural Networks (CNNs) tra
 - CNN-based disease prediction
 - Multi-crop support
 - Prediction confidence score
+- Disease-related fertilizer recommendations
+- Disease-prevention guidance
 - Prediction history tracking
 - Dashboard interface
 - Responsive UI design
